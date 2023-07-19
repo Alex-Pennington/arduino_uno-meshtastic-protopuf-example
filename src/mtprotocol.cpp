@@ -41,14 +41,15 @@ void mt_set_debug(bool on) {
 }
 
 bool mt_send_radio(const char * buf, size_t len) {
-  if (mt_wifi_mode) {
-    //return mt_wifi_send_radio(buf, len);
-  } else if (mt_serial_mode) {
-    return mt_serial_send_radio(buf, len);
-  } else {
-    Serial.println("mt_send_radio() called but it was never initialized");
-    while(1);
-  }
+  return mt_serial_send_radio(buf, len);
+  // if (mt_wifi_mode) {
+  //   return mt_wifi_send_radio(buf, len);
+  // } else if (mt_serial_mode) {
+  //   return mt_serial_send_radio(buf, len);
+  // } else {
+  //   Serial.println("mt_send_radio() called but it was never initialized");
+  //   while(1);
+  // }
 }
 
 // Request a node report from our MT
